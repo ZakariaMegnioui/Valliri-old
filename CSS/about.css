@@ -1,0 +1,893 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background: #000000;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+header {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.open {
+  overflow-y: hidden;
+}
+.menu-botton {
+  width: 33px;
+  height: 30px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  cursor: pointer;
+  top: 60px;
+  right: 208px;
+  z-index: 99;
+}
+.menu-botton .menu {
+  width: 100%;
+  height: 4px;
+  transform: scaleX(-1);
+  background: #a8eb12;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgb(30, 31, 31);
+  z-index: 3;
+}
+.menu::before,
+.menu::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #a8eb12;
+  border-radius: 5px;
+  transition: all 0.9s ease-out;
+  box-shadow: 0 2px 5px rgb(30, 31, 31);
+}
+.menu::before {
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  width: 58%;
+  height: 5px;
+}
+.menu::after {
+  transform: translateY(-8px);
+  transition: all 0.3s ease-in-out;
+  width: 83%;
+}
+.menu-botton.open .menu {
+  background: transparent;
+  box-shadow: none;
+}
+.menu-botton.open .menu::before {
+  transform: rotate(45deg);
+  animation: isOpen 0.6s forwards;
+}
+
+.menu-botton:hover .menu:before {
+  width: 100%;
+}
+.menu-botton:hover .menu:after {
+  width: 100%;
+}
+.menu-botton.open .menu::after {
+  transform: rotate(-45deg);
+  animation: isOpen 0.6s forwards;
+}
+
+@keyframes isOpen {
+  0% {
+    transform: rotate(0deg);
+    width: 100%;
+  }
+
+  60% {
+    width: 0%;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+.menu-botton.restart .menu {
+  background: #a8eb12;
+
+  animation: restart 0.7s forwards;
+}
+@keyframes restart {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+.menu-page {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, #000000cc, #000000a1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: all 1s ease-in-out;
+  z-index: 6;
+  position: fixed;
+  top: 0%;
+  overflow-y: hidden;
+  z-index: 20;
+}
+.menu-page.open {
+  transform: translateX(0%);
+}
+
+.menu-page .right {
+  width: 53%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  background: linear-gradient(rgba(22, 22, 22, 0.842), rgba(10, 10, 10, 0.678)),
+    url("../img/wallpaperflare.com_wallpaper\(25\).jpg");
+  background-position: center;
+  background-size: cover;
+  z-index: 3;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.right.open {
+  animation: right 1.3s forwards;
+  opacity: 1;
+}
+@keyframes right {
+  0% {
+    top: -100%;
+  }
+  60% {
+    top: -100%;
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+@keyframes left {
+  0% {
+    bottom: -100%;
+  }
+  60% {
+    bottom: -100%;
+  }
+
+  100% {
+    bottom: 0%;
+  }
+}
+
+.menu-page .left {
+  width: 47%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.left.open {
+  animation: left 1.3s forwards;
+  opacity: 1;
+}
+.menu-page .left .bottom {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  background: linear-gradient(rgba(22, 22, 22, 0.842), rgba(10, 10, 10, 0.678)),
+    url("../img/wallpaperflare.com_wallpaper\(26\).jpg");
+  background-position: center;
+  background-size: cover;
+  font-size: 38px;
+  font-weight: bolder;
+  text-align: center;
+  color: #a8eb12;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.menu-page .left .top h4 {
+  background: linear-gradient(to right, #309402, #a8eb12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.menu-page .left .bottom h4 {
+  background: linear-gradient(to right, #309402, #a8eb12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.menu-page .left .top {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(rgba(22, 22, 22, 0.842), rgba(10, 10, 10, 0.678)),
+    url("../img/wallpaperflare.com_wallpaper\(27\).jpg");
+  background-position: center;
+  background-size: cover;
+  font-size: 38px;
+  font-weight: bolder;
+  text-align: center;
+  color: #a8eb12;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.menu-page .left .top i {
+  position: absolute;
+  top: 20%;
+}
+.menu-page .left .bottom i {
+  position: absolute;
+  top: 20%;
+}
+p {
+  font-size: 18px;
+  position: absolute;
+  bottom: 30%;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+.menu-page .left .top:hover {
+  filter: brightness(140%);
+}
+.menu-page .left .bottom:hover {
+  filter: brightness(140%);
+}
+ul li {
+  list-style: none;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 38px;
+  font-weight: bolder;
+  position: relative;
+  cursor: pointer;
+}
+ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 5px #585d5d solid;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 0.3s ease-in-out;
+}
+ul li a:hover::before {
+  transform: scaleX(1);
+}
+
+.right button {
+  position: relative;
+  border-radius: 40px;
+  background: transparent;
+  border: #a8eb12 solid 2px;
+  color: white;
+  width: 245px;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 70px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  transition: all 0.4s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right button p {
+  font-size: 16px;
+}
+.right button:hover {
+  background: linear-gradient(to right, #309402, #a8eb12);
+  justify-content: space-between;
+  font-weight: 900;
+  border: none;
+  width: 260px;
+}
+button:hover #icon {
+  width: 25px;
+  height: 25px;
+  opacity: 1;
+  color: #1d1d1d;
+}
+button:hover P {
+  left: 8%;
+  color: #1d1d1d;
+}
+button #icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 18px;
+  right: 10px;
+  color: #000000;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+}
+.right ul li {
+  opacity: 0;
+}
+.right.open ul li:nth-child(1) {
+  animation: li 1.6s forwards;
+}
+.right.open ul li:nth-child(2) {
+  animation: li 1.9s forwards;
+}
+
+.right.open ul li:nth-child(3) {
+  animation: li 2.3s forwards;
+}
+.right.open ul li:nth-child(4) {
+  animation: li 2.6s forwards;
+}
+.right.open ul li:nth-child(5) {
+  animation: li 2.9s forwards;
+}
+
+.right.open ul button:nth-child(6) {
+  animation: li 3.3s forwards;
+}
+
+@keyframes li {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.right ul:nth-child(2) {
+  position: absolute;
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 4px;
+  margin: auto;
+}
+
+svg {
+  margin: 30px;
+  cursor: pointer;
+  fill: rgba(100, 97, 97, 0.924);
+  transition: all 0.4s ease-in-out;
+}
+svg:hover {
+  fill: #a8eb12;
+}
+.right.open ul:nth-child(2) {
+  animation: svg 2.8s linear;
+}
+@keyframes svg {
+  0% {
+    bottom: -100px;
+  }
+  30% {
+    bottom: -100px;
+  }
+  70% {
+    bottom: -100px;
+  }
+  100% {
+    bottom: 4px;
+  }
+}
+.title h2:nth-child(2) {
+  color: white;
+}
+.title h2:nth-child(1) {
+  background: linear-gradient(to right, #309402, #a8eb12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.h3-menu {
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  color: white;
+  top: 63px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  z-index: 93;
+  font-size: 16px;
+  right: 140px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.title {
+  position: fixed;
+  display: flex;
+  letter-spacing: 1.5px;
+  top: 40px;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 37px;
+  font-weight: bold;
+  cursor: pointer;
+  background-size: 100%;
+
+  transition: 1s;
+}
+.title h2:nth-child(2) {
+  color: white;
+}
+.number {
+  transition: 0.3s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  color: white;
+  position: fixed;
+  letter-spacing: 2px;
+  font-weight: bold;
+  top: 63px;
+  left: 100px;
+}
+#about {
+  color: #690404;
+}
+.landing {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.what_Im_Into {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.4s;
+  transform: translateY(50px);
+}
+.what_Im_Into p {
+  position: absolute;
+  width: 40%;
+  left: 120px;
+  font-size: 24px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  z-index: 2;
+}
+.what_Im_Into p:nth-child(2) {
+  top: 270px;
+}
+.what_Im_Into p:nth-child(3) {
+  top: 410px;
+}
+.what_Im_Into p:nth-child(4) {
+  top: 580px;
+}
+.what_Im_Into p:nth-child(5) {
+  top: 680px;
+  color: #a8eb12;
+}
+
+a {
+  color: #a8eb12;
+  text-decoration: none;
+}
+.bo {
+  width: 30%;
+  height: 30vw;
+  position: absolute;
+  right: 100px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  transform: translateY(10px);
+}
+.bo .tittel {
+  position: absolute;
+
+  transform: translateX(-40%) rotate(45deg);
+  font-weight: bolder;
+  color: rgba(49, 48, 48, 0.582);
+  font-size: 260px;
+  z-index: -99;
+}
+
+.what_Im_Into .wIn_text {
+  position: absolute;
+  z-index: 2;
+  left: 120px;
+  top: 150px;
+  font-size: 40px;
+  background: linear-gradient(to right, #309402, #a8eb12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 66px;
+  text-transform: uppercase;
+}
+@keyframes clip1 {
+  0% {
+    clip-path: polygon(0% -50%, 50% -50%, -50% 50%, -100% 50%);
+  }
+  100% {
+    clip-path: polygon(150% 50%, 200% 50%, 100% 150%, 50% 150%);
+  }
+}
+@keyframes clipa {
+  0% {
+    clip-path: polygon(-5% -55%, 55% -45%, -45% 55%, -95% 55%);
+  }
+  100% {
+    clip-path: polygon(150% 50%, 200% 50%, 100% 150%, 50% 150%);
+  }
+}
+@keyframes clip2 {
+  0% {
+    clip-path: polygon(50% -50%, 100% -50%, 200% 50%, 150% 50%);
+  }
+  100% {
+    clip-path: polygon(-100% 50%, -50% 50%, 50% 150%, 0% 150%);
+  }
+}
+@keyframes clipb {
+  0% {
+    clip-path: polygon(40% -60%, 100% -50%, 190% 40%, 150% 50%);
+  }
+  100% {
+    clip-path: polygon(-100% 50%, -50% 50%, 50% 150%, 0% 150%);
+  }
+}
+@keyframes clip3 {
+  0% {
+    clip-path: polygon(-100% -150%, -50% -150%, -150% -50%, -200% -50%);
+  }
+  100% {
+    clip-path: polygon(150% 50%, 200% 50%, 100% 150%, 50% 150%);
+  }
+}
+@keyframes clip4 {
+  0% {
+    clip-path: polygon(150% -150%, 200% -150%, 300% -50%, 250% -50%);
+  }
+  100% {
+    clip-path: polygon(-100% 50%, -50% 50%, 50% 150%, 0% 150%);
+  }
+}
+.clip {
+  filter: grayscale(1);
+  position: fixed;
+  width: 80%;
+  height: 100%;
+  background: url("../img/one.jpg") no-repeat center;
+  background-position: center;
+  background-size: cover;
+  transform-origin: center;
+}
+#clip1 {
+  animation: clip1 4s linear infinite;
+}
+#clipa {
+  transform: scale(1.1, 1.1);
+  animation: clipa 9s linear infinite;
+}
+#clip2 {
+  transform: scale(1.12, 1.12);
+  animation: clip2 5s linear infinite;
+}
+#clipb {
+  transform: scale(1.14, 1.14);
+  animation: clipb 4s linear infinite;
+}
+#clip3 {
+  transform: scale(1.15, 1.15);
+  animation: clip3 7s linear infinite;
+}
+#clip4 {
+  transform: scale(1.13, 1.13);
+  animation: clip4 6s linear infinite;
+}
+
+@media (max-width: 1500px) {
+  .left .top h4 {
+    font-size: 2.7vw;
+  }
+
+  @media (max-width: 1300px) {
+    .title {
+      font-size: 26px;
+    }
+  }
+  .title {
+    font-size: 35px;
+  }
+}
+@media (max-width: 1200px) {
+  .what_Im_Into {
+    flex-direction: column;
+
+    text-align: center;
+  }
+  body {
+    height: 120vh;
+  }
+  .number {
+    left: 2vw;
+  }
+  .title {
+    font-size: 4vw;
+  }
+  .h3-menu {
+    right: 2vw;
+  }
+  .menu-botton {
+    right: 10vw;
+  }
+  .what_Im_Into p {
+    width: 80%;
+    height: 50%;
+    top: 0;
+
+    left: 8vw;
+  }
+  .wIn_text {
+    width: 100%;
+    height: 50%;
+    transform: translateX(-130px);
+  }
+  .what_Im_Into p {
+    font-size: 17px;
+  }
+  .what_Im_Into .bo {
+    width: 40%;
+    height: 40%;
+    bottom: 0;
+    left: 29%;
+  }
+}
+
+@media (max-width: 1180px) {
+  .left {
+    display: none;
+  }
+  .title {
+    font-size: 30px;
+    z-index: 99;
+  }
+  .h3-menu {
+    z-index: 5;
+  }
+  .menu-page .right {
+    width: 100%;
+  }
+}
+@media (max-width: 1100px) {
+  .what_Im_Into {
+    transform: translateY(-40px);
+  }
+  .bo {
+    transform: translateY(50px);
+  }
+}
+@media all and (max-width: 800px) {
+  body {
+    height: 100vh;
+  }
+  .bo {
+    display: none;
+  }
+  .what_Im_Into {
+    transform: translateY(80px);
+    height: 100%;
+  }
+  .number {
+    display: none;
+  }
+  .h3-menu {
+    display: none;
+  }
+  p {
+    font-size: 27px;
+    line-height: 30px;
+  }
+}
+@media all and (max-width: 700px) {
+  body {
+    overflow-y: scroll;
+  }
+  .title {
+    font-size: 4vw;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media all and (max-width: 600px) {
+  body {
+    height: 120vh;
+  }
+  .title {
+    font-size: 4vw;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    top: 0;
+  }
+}
+@media all and (max-width: 500px) {
+  .title {
+    font-size: 4vw;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 100%;
+  }
+
+  .what_Im_Into p {
+    transform: translateY(-150px);
+  }
+  .what_Im_Into .wIn_text {
+    top: 0px;
+    font-size: 34px;
+  }
+}
+@media all and (max-width: 400px) {
+  body {
+    height: 120vh;
+  }
+  .title {
+    font-size: 5vw;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 80%;
+  }
+
+  .what_Im_Into p {
+    transform: translateY(-180px);
+    font-size: 14px;
+
+    height: 100%;
+  }
+  .what_Im_Into .wIn_text {
+    top: 10px;
+    font-size: 30px;
+  }
+}
+@media all and (max-width: 300px) {
+  .title {
+    font-size: 5vw;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 100%;
+    top: -30px;
+  }
+
+  .what_Im_Into p {
+    font-size: 12px;
+  }
+  .what_Im_Into {
+    font-size: 12px;
+  }
+  .what_Im_Into .wIn_text {
+    font-size: 27px;
+  }
+}
+@media all and (max-height: 640px) {
+  body {
+    height: 140vh;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    transform: translateY(-30px);
+  }
+}
+@media all and (max-height: 640px) {
+  body {
+    height: 140vh;
+  }
+  .what_Im_Into {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    transform: translateY(-30px);
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+}
+@media (max-width: 575px) {
+  #div ul li a {
+    font-size: 28px;
+  }
+  #div button {
+    width: 200px;
+    height: 38px;
+  }
+  #div p {
+    font-size: 14px;
+  }
+  #div i {
+    display: none;
+  }
+  svg {
+    width: 18px;
+  }
+}
+@media (max-height: 620px) {
+  #div ul li a {
+    font-size: 26px;
+  }
+  ul {
+    transform: translateY(30px);
+  }
+  #div button {
+    width: 180px;
+    height: 28px;
+    transform: translateY(-30px);
+  }
+  #div p {
+    font-size: 12px;
+  }
+  #div i {
+    display: none;
+  }
+  svg {
+    width: 18px;
+    transform: translateY(29px);
+  }
+}
